@@ -35,7 +35,7 @@ const calculate = (sum) => {
     if(sum){
         for(let film of films) {
         if(film.element.classList.contains('this')) 
-        html += `<div class="text-white mb-[15px]">Siz ${film.name} filmine ${sum} bilet aldiniz, ${sum*film.price} manat odemelisiniz.</div>`
+        html += `<div class="text-white mb-[15px]">Siz ${film.name} filminə ${sum} bilet seçdiniz, ödəniş ${sum*film.price} manatdır.</div>`
     }
     }
     
