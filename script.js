@@ -1,6 +1,8 @@
 const seatContainer = document.querySelector('#seatContainer')
 const filmContainer = document.querySelector('#filmContainer')
 const finalInfo = document.querySelector('#finalInfo')
+const buttons = seatContainer.querySelectorAll('button');
+
 let sum = 0
 
 const films = [
@@ -30,10 +32,13 @@ const films = [
 
 const calculate = (sum) => {
     let html = ''
-    for(let film of films) {
+    if(sum){
+        for(let film of films) {
         if(film.element.classList.contains('this')) 
         html += `<div class="text-white mb-[15px]">Siz ${film.name} filmine ${sum} bilet aldiniz, ${sum*film.price} manat odemelisiniz.</div>`
     }
+    }
+    
     finalInfo.innerHTML = html
 }
 
@@ -58,8 +63,14 @@ calculate(sum)
 
 
 filmContainer.addEventListener('click', e => {
+    // seatContainer.tagName('button').classList.remove('bg-[#FF9446]')
+    buttons.forEach(button => {
+        button.classList.remove('bg-[#FF9446]')
+        button.classList.add('bg-[#5B5B5B]')
+        sum = 0
+        calculate(sum)
+    });
     if (e.target.matches('button') && e.target.classList.contains('bg-[#5B5B5B]')) {
-
         for (let film of films) {
             if (film.element.classList.contains('bg-[#66B979]')) {
                 film.element.classList.remove('bg-[#66B979]')
